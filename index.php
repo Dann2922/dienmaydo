@@ -171,7 +171,7 @@
 										<option value='10000000'>10.000.000</option>
 										<option value='200000000'>20.000.000</option>
 									</select> -->
-									<input type="button" name="btnSearch" class="search-btn" value="Tìm" onclick="TimKiem();"/>
+									<input type="button" name="btnSearch" class="search-btn" value="Search" onclick="TimKiem();"/>
 
 								</form>
 							</div>
@@ -185,7 +185,7 @@
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-heart-o"></i>
-										<span>Yêu Thích</span>
+										<span>Favourites</span>
 										<div class="qty"><?php if(isset($_SESSION['YeuThich']) && count($_SESSION['YeuThich']) > 0) echo count($_SESSION['YeuThich']); else echo ''; ?></div>
 									</a>
 									<div class="cart-dropdown">
