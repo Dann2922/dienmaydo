@@ -51,8 +51,8 @@
 				if(TuKhoa == "")
 				{
 					swal({
-						title: 'Lỗi',
-						text: 'Nội dung tìm kiếm không được để trống',
+						title: 'Eror',
+						text: 'Search content can not be empty',
 						type: 'error'
 					});
 					return false;
@@ -89,8 +89,8 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +84977-53-15-28</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> toanlh3@email.com</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> +8499 049 053</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> antct@email.com</a></li>
 						<li><a href="#"><i class="fa fa-map-marker"></i> Cần Thơ</a></li>
 						<li><a href="https://www.facebook.com/ongthanhtoan"><i class="fa fa-facebook"></i>Facebook</a></li>
 					</ul>
@@ -99,23 +99,23 @@
 						if(isset($_SESSION['TaiKhoan']) && $_SESSION['QuanTri'] == 0)
 						{
 							?>
-							<li><a href="?ID=profile&ma=<?php echo $_SESSION['TaiKhoan']; ?>"><i class="fa fa-user"></i> <?php echo "Chào: ".$_SESSION['TaiKhoan'] ; ?></a></li>
-							<li><a href="?ID=dangxuat"><i class="fa fa-user-o"></i> Đăng Xuất</a></li>
+							<li><a href="?ID=profile&ma=<?php echo $_SESSION['TaiKhoan']; ?>"><i class="fa fa-user"></i> <?php echo "Hi: ".$_SESSION['TaiKhoan'] ; ?></a></li>
+							<li><a href="?ID=dangxuat"><i class="fa fa-user-o"></i> Log out</a></li>
 							<?php 
 						}
 						else if(isset($_SESSION['TaiKhoan']) && $_SESSION['QuanTri'] == 1)
 						{
 							?>
-							<li><a href="quantri/index.php"><i class="fa fa-cog"></i> Quản Trị</a></li>
-							<li><a href="?ID=profile&ma=<?php echo $_SESSION['TaiKhoan']; ?>"><i class="fa fa-user"></i> <?php echo"Chào Quản Trị: ".$_SESSION['TaiKhoan']; ?></a></li>
-							<li><a href="?ID=dangxuat"><i class="fa fa-sign-out"></i> Đăng Xuất</a></li>
+							<li><a href="quantri/index.php"><i class="fa fa-cog"></i> Management</a></li>
+							<li><a href="?ID=profile&ma=<?php echo $_SESSION['TaiKhoan']; ?>"><i class="fa fa-user"></i> <?php echo"Hi manager: ".$_SESSION['TaiKhoan']; ?></a></li>
+							<li><a href="?ID=dangxuat"><i class="fa fa-sign-out"></i> Log out</a></li>
 							<?php 
 						}
 						else 
 						{
 							?>
-							<li><a href="?ID=dangnhap"><i class="fa fa-user"></i> Đăng Nhập</a></li>
-							<li><a href="?ID=dangky"><i class="fa fa-user-o"></i> Đăng Ký</a></li>
+							<li><a href="?ID=dangnhap"><i class="fa fa-user"></i> Log in</a></li>
+							<li><a href="?ID=dangky"><i class="fa fa-user-o"></i> Sign in</a></li>
 						</ul>
 						<?php 
 					}
@@ -145,7 +145,7 @@
 							<div class="header-search">
 								<form method="post" action="?ID=Timkiem">
 									<select name="slLoaiSP" id="slLoaiSP" class="input-select">
-										<option value='0'>Danh Mục Sản Phẩm</option>
+										<option value='0'>Category</option>
 										<?php 
 										//$SelectLSP = mysqli_query($Connect,"SELECT * FROM loaisanpham");
 										$SelectLSP = pg_query($Connect,'SELECT * FROM public."loaisanpham"');
@@ -212,7 +212,7 @@
 											?>
 										</div>
 										<div class="cart-btns">
-											<a style="width: 100%; background: #d31839;" href="?ID=Mucyeuthich">Xem Mục Yêu Thích</a>
+											<a style="width: 100%; background: #d31839;" href="?ID=Mucyeuthich">Favourite</a>
 										</div>
 									</div>
 								</div>
@@ -222,7 +222,7 @@
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Giỏ Hàng</span>
+										<span>Cart</span>
 										<div class="qty"><?php if(isset($_SESSION['GioHang']) && count($_SESSION['GioHang']) > 0) echo count($_SESSION['GioHang']); else echo ''; ?></div>
 									</a>
 									<div class="cart-dropdown">
@@ -249,8 +249,8 @@
 											?>
 										</div>
 										<div class="cart-summary">
-											<small><?php if(isset($_SESSION['GioHang']) && count($_SESSION['GioHang']) > 0) echo count($_SESSION['GioHang']); else echo ''; ?> Item(s) được chọn</small>
-											<h5 style="color: #D10024;">TỔNG TIỀN: 
+											<small><?php if(isset($_SESSION['GioHang']) && count($_SESSION['GioHang']) > 0) echo count($_SESSION['GioHang']); else echo ''; ?> Item(s) chosen</small>
+											<h5 style="color: #D10024;">Total: 
 												<?php  
 												$Tong = 0;
 												foreach ($_SESSION['GioHang'] as $key => $itemGH)
@@ -262,8 +262,8 @@
 											</h5>
 										</div>
 										<div class="cart-btns">
-											<a href="?ID=Giohang">Xem Giỏ Hàng</a>
-											<a href="<?php if(isset($_SESSION['TaiKhoan'])){ echo "?ID=Thanhtoan"; } else echo "?ID=dangnhap";  ?>">Thanh Toán<i class="fa fa-arrow-circle-right"></i></a>
+											<a href="?ID=Giohang">Watch cart</a>
+											<a href="<?php if(isset($_SESSION['TaiKhoan'])){ echo "?ID=Thanhtoan"; } else echo "?ID=dangnhap";  ?>">Pay<i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -443,13 +443,13 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
-								<p>Siêu thị Điện Máy Đỏ là một trong những siêu thị điện máy phát triển nhanh và ổn định bất chấp tình hình kinh tế thuận lợi hay khó khăn. Chuỗi siêu thị Salomon được thành lập từ 2018 chuyên bán lẻ các sản phẩm kỹ thuật số di động bao gồm điện thoại di động, máy tính bảng, laptop và phụ kiện.</p>
+								<p>ATN is a Vietnamese company which is selling toys to teenagers in many provinces all over Vietnam.</p>
 							</div>
 						</div>
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">PHÂN LOẠI</h3>
+								<h3 class="footer-title">Classify</h3>
 								<ul class="footer-links">
 									<?php 
 									//$SelectLSP = mysqli_query($Connect,"SELECT * FROM loaisanpham");
@@ -481,23 +481,23 @@
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">NGƯỜI DÙNG</h3>
+								<h3 class="footer-title">USER</h3>
 								<ul class="footer-links">
-									<li><a href="?ID=profile&ma=<?php echo $_SESSION['TaiKhoan']; ?>">Tài Khoản</a></li>
-									<li><a href="?ID=Giohang">Thông Tin Giỏ Hàng</a></li>
-									<li><a href="?ID=Mucyeuthich">Mục Yêu Thích</a></li>
+									<li><a href="?ID=profile&ma=<?php echo $_SESSION['TaiKhoan']; ?>">ACCOUNT</a></li>
+									<li><a href="?ID=Giohang">Cart Information</a></li>
+									<li><a href="?ID=Mucyeuthich">Favourite</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">LIÊN HỆ</h3>
+								<h3 class="footer-title">Contact</h3>
 								<ul class="footer-links">
 									<li><a href="https://www.facebook.com/ongthanhtoan"><i class="fa fa-facebook"></i>Facebook</a></li>
 									<li><a href="#"><i class="fa fa-map-marker"></i>Cần Thơ</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+84977-53-15-28</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>Toanlh3@email.com</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+8499 049 053</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>antct@email.com</a></li>
 								</ul>
 							</div>
 						</div>
@@ -551,12 +551,12 @@
 			event.preventDefault();
 			var url = $('.'+Class).attr("href");
 			swal({
-				title: "Bạn Có Chắc Muốn Xóa?",
-				text: "Vui Lòng Xác Nhận Trước Khi Xóa!",
+				title: "Are you sure to delete?",
+				text: "Confirm before processing, please!",
 				type: "warning",
 				showCancelButton: true,
 				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "Đồng Ý Xóa!",
+				confirmButtonText: "Delete surely!",
 				closeOnConfirm: false
 			},
 			function(isConfirm)
@@ -564,7 +564,7 @@
 				if(isConfirm)
 				{
 					swal({
-						title: "Xóa Thành Công",
+						title: "Delete successfully",
 						type: "success"
 					},
 					function()
@@ -577,7 +577,7 @@
 				else
 				{
 					swal({
-						title: "Đã Hủy",
+						title: "Canceled",
 						type: "error"
 					});
 				}
